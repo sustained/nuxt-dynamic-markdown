@@ -5,7 +5,8 @@
   "author": "sustained <sustained.dissonance@gmail.com> (https://sustained.name/)",
   "main": "lib/module.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rollup": "node_modules/.bin/rollup -c"
   },
   "repository": {
     "type": "git",
