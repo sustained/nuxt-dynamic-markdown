@@ -171,9 +171,9 @@ And the second file will be called `index.vue`:
       <li v-for="project in projects">
         <nuxt-link
           :to="{
-          name: 'projects-project',
-          params: { project: projectName
-        }"
+            name: 'projects-project',
+            params: { project: projectName }
+          }"
         >
           {{ project }}
         </nuxt-link>
