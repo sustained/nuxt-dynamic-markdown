@@ -1,6 +1,6 @@
 {
   "name": "nuxt-dynamic-markdown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Markdown + frontmatter -> dynamically generated vuex stores.",
   "author": "sustained <sustained.dissonance@gmail.com> (https://sustained.name/)",
   "main": "lib/module.js",
