@@ -213,4 +213,10 @@ Finally we'll create a file called `Bar.vue` in `components` since we referenced
 
 If the stars were aligned properly and you uttered the incantations with the correct stress and prosody then you should see something like this:
 
-(result coming soon - I need to now take a detour and create the demo/example repo so I can take screenshots)
+![Project listing.](docs/images/projects.png)
+
+![Individual project.](docs/images/project.png)
+
+#### Notes
+
+You may see something slightly more simple-looking if you didn't use our [example project](https://www.github.com/sustained/nuxt-dynamic-markdown-example-project) (which uses Bulma).
