@@ -7,5 +7,6 @@ export default {
     format: "esm",
     file: "dist/DynamicMarkdown.js"
   },
-  plugins: [vue(), cjs()]
+  plugins: [vue(), cjs()],
+  external: ["vue"]
 };
