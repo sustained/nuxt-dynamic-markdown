@@ -122,7 +122,7 @@ export default {
     },
 
     getComponentNameAndPath(component) {
-      if (!component.contains("/")) {
+      if (!component.includes("/")) {
         return [component, component];
       }
 
