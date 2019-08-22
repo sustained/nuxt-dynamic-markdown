@@ -144,7 +144,7 @@ The first file will be called `_project.vue`:
 ```html
 <template>
   <section>
-    <DynamicMarkdown v-bind="project" custom-attributes="{ custom: 'Hello!' }" />
+    <DynamicMarkdown v-bind="project" :custom-attributes="{ custom: 'Hello!' }" />
   </section>
 </template>
 
