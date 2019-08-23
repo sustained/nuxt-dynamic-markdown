@@ -1,5 +1,7 @@
 # nuxt-dynamic-markdown
 
+> Markdown + frontmatter -> dynamically generated vuex stores + more.
+
 ## Table of Contents
 
 - [Disclaimer](#disclaimer)
@@ -40,8 +42,8 @@ This project is **pre-alpha** and you should 100% not use it in a production env
 - **There are no tests**. Zero. Nada. Keine. Zilch.
 - I haven't tried running any of this in other browsers; on other OSes; with different versions of Nuxt, Vue etc. nor can I guarantee that it works in parallel dimensions, different universes or alternate timelines.
 - It currently relies on `fs.promises` (experimental API, requires `node > 8` I believe).
-- This README presumes you understood Nuxt and Vue to a decent degree.
-- Just because the README says something doesn't mean that feature is ready, or that it has even been started, or that it will ever come, or that it's possible, or that you'd like it if any of those things were true.
+- This README presumes a decent understanding of both Nuxt and Vue.
+- Just because the README mentions a feature, that doesn't mean that said feature is ready, or that it has even been started, or that it will ever come, or that it's possible, or that you'd like it if any of those things were true.
 - While there is a basic guide/walkthrough there is no actual documentation (API or otherwise) at this early stage.
 - I'm really new to Nuxt and I'm learning as I go so this may well be the worst Nuxt module of all time!
 
@@ -53,7 +55,7 @@ _[Back to top](#nuxt-dynamic-markdown)_
 
 ## Rationale / Origin
 
-I chose to use Nuxt for my personal site and at some point I decided that I wanted some kind of custom blog system.
+I chose to use Nuxt for my personal site and at some point decided that I wanted some kind of custom blog system.
 
 It needed to allow one to:
 
@@ -105,16 +107,18 @@ The live demo is simply [this example project](https://www.github.com/sustained/
 
 If you don't already have a nuxt project then create one:
 
+> **IMPORTANT:** Make sure to enable Vuex when prompted.
+
 ```sh
 npx create-nuxt-app my-project
 ```
 
 ### Install the module
 
-With either npm or yarn.
+With either npm or yarn:
 
 ```sh
-npm i --save nuxt-dynamic-markdown
+npm install --save nuxt-dynamic-markdown
 # or
 yarn add nuxt-dynamic-markdown
 ```
@@ -214,7 +218,8 @@ There's a lot going on there so let's break it down:
 - All attributes can be accessed within the markdown.
 - You can pass custom (non-YFM) attributes.
 - By convention, `keywords` and `description` populate `<meta>`.
-  - Currently requires `getMeta` and `setHead` mixins.
+
+> **NOTE:** Currently you must mix in the `getMeta` and `setHead` mixins in order for `<meta>` to be populated.
 
 #### Registering components
 
@@ -234,7 +239,7 @@ _[Back to top](#nuxt-dynamic-markdown)_
 
 Next, we'll create a `projects` folder in `pages` and within it we'll create two files.
 
-The first file will be called `_project.vue`:
+The first file will be called `_project.vue` and will display an individual project:
 
 ```html
 <template>
@@ -262,7 +267,7 @@ Since the route parameter for a Nuxt page called `_project.vue` is `project` the
 
 So we simply pass this in to the `DynamicMarkdown.vue` component, which renders it for us.
 
-**NOTE:** It's important that you pass it in exactly as above - `v-bind="entity"`.
+> **NOTE:** It's important that you pass it in exactly as above - `v-bind="entity"`.
 
 ##### Passing custom attributes
 
@@ -270,19 +275,19 @@ As you can see, this is also where we pass in the custom attributes mentioned ea
 
 ##### Mixins and helpers (entity)
 
-For now it is required that you, at a minimum, import the `asyncData` helper and use it.
+For now it is **required** that you, at a minimum, import the `asyncData` helper and pass it to your component.
 
-The `getMeta` and `setHead` mixins are not required to be used however if you do they will take care of setting `<meta>` tags for you based on YAML front matter.
+The `getMeta` and `setHead` mixins on the other hand are *not required* to be used.
 
 ##### A note on boilerplate
 
 Ideally none of this boilerplate would be necessary but for the time being it is, unfortunately.
 
-I intend to look into ways to reduce and or remove it.
+I intend to look into ways to reduce and/or remove it.
 
 #### The project listing page
 
-The second file will be called `index.vue`:
+The second file will be called `index.vue` and will list all projects:
 
 ```html
 <template>
@@ -313,13 +318,11 @@ The second file will be called `index.vue`:
 </script>
 ```
 
-There's not really much going on here.
-
 ##### Mixins and helpers (index)
 
-For this case (index/listing pages), it is not _required_ that you use the `getEntities` helper.
+For this case (index/listing pages), it is **not required** that you use the `getEntities` helper.
 
-If you wanted to you could just as well create a computed property that simply accesses the Vuex store - it's roughly the same amount of code, to be honest.
+If you wanted to, you could just as well create a computed property that simply accesses the Vuex store - it's roughly the same amount of code, to be honest.
 
 _[Back to top](#nuxt-dynamic-markdown)_
 
@@ -327,12 +330,12 @@ _[Back to top](#nuxt-dynamic-markdown)_
 
 ### Creating the `Bar` component
 
-Finally we'll create a file called `Bar.vue` in `components` since we referenced it in our `content.md` file.
+Finally we'll create a file called `Bar.vue` in `components` since we referenced it in our `content.md` file earlier.
 
 ```html
 <template>
   <div>
-    <p>I am bar component</p>
+    <p>I am bar component.</p>
   </div>
 </template>
 ```
@@ -349,7 +352,7 @@ If the stars were aligned properly and you uttered the incantations with the cor
 
 ![Individual project.](docs/images/project.png)
 
-**NOTE:** You may see something slightly more simple-looking presuming you didn't use our [example project](https://www.github.com/sustained/nuxt-dynamic-markdown-example-project) (which uses Bulma).
+> **NOTE:** You may see something slightly more simple-looking presuming you didn't use our [example project](https://www.github.com/sustained/nuxt-dynamic-markdown-example-project) (which uses Bulma).
 
 _[Back to top](#nuxt-dynamic-markdown)_
 
