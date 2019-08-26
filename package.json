@@ -5,7 +5,7 @@
   "author": "sustained <sustained.dissonance@gmail.com> (https://sustained.name/)",
   "main": "lib/module.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha --require @babel/register --require @babel/polyfill",
     "rollup": "node_modules/.bin/rollup -c",
     "release:major": "changelog -M --allow-unknown && git add CHANGELOG.md && git commit -m 'docs: Updated CHANGELOG.md.' && npm version major && git push origin && git push origin --follow-tags",
     "release:minor": "changelog -m --allow-unknown && git add CHANGELOG.md && git commit -m 'docs: Updated CHANGELOG.md.' && npm version minor && git push origin && git push origin --follow-tags",
