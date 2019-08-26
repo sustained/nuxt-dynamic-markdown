@@ -1,0 +1,7 @@
+js:
+  aliases: [javascript]
+  description: JavaScript is used to add behaviour and interactivity to web pages.
+css:
+  description: CSS is a language used to describe the presentation of HTML documents.
+html:
+  description: HTML is used to define the meaning and structure of web content.
