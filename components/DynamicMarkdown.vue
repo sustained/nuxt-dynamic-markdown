@@ -74,7 +74,9 @@ export default {
     Merge YAML frontmatter + custom attributes into data.
   */
   data() {
-    const data = {};
+    const data = {
+      _componentList: []
+    };
 
     for (const [key, value] of Object.entries(this.attributes)) {
       data[key] = value;
@@ -98,8 +100,10 @@ export default {
     */
     if (this.componentList.length === 0) {
       if (Array.isArray(this.attributes.components)) {
-        this.componentList = this.attributes.components;
+        this._componentList = this.attributes.components;
       }
+    } else {
+      this._componentList = this.componentList;
     }
 
     this.registerComponents();
@@ -116,7 +120,7 @@ export default {
             <Component is="components.Foo" /> which is awful in its own right.
     */
     registerComponents() {
-      this.componentList.forEach(component => {
+      this._componentList.forEach(component => {
         const [name, path] = this.getComponentNameAndPath(component);
 
         Vue.component(name, () => import(`~/components/${path}.vue`));
@@ -124,7 +128,7 @@ export default {
     },
 
     unregisterComponents() {
-      this.componentList.forEach(component => {
+      this._componentList.forEach(component => {
         const [name] = this.getComponentNameAndPath(component);
 
         delete Vue.options.components[name];
