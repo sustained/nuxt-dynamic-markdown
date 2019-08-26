@@ -92,6 +92,16 @@ export default {
   },
 
   created() {
+    /*
+      Allow specifying the componentList via attributes.components 
+      but only in the case that componentList is empty.
+    */
+    if (this.componentList.length === 0) {
+      if (Array.isArray(this.attributes.components)) {
+        this.componentList = this.attributes.components;
+      }
+    }
+
     this.registerComponents();
 
     this.renderer = new Function(this.renderFunction).bind()();
