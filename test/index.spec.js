@@ -98,6 +98,10 @@ describe("processMarkdownSource()", () => {
         ({ languages, technologies } = relationships);
       });
 
+      after(() => {
+        processed = entities = relationships = languages = technologies = null;
+      });
+
       it("should result in the correct number of entities and relationships", async () => {
         try {
           return (
@@ -133,21 +137,31 @@ describe("processMarkdownSource()", () => {
     });
 
     describe("example source (blog)", () => {
+      let processed;
+      let articles, categories, relationships;
+      let tags;
+
+      before(async () => {
+        processed = await processMarkdownSource(
+          {
+            entities: ["categories", "articles"],
+            directory: "blog",
+            relationships: ["tags"]
+          },
+          { languages: ["en"] }
+        );
+
+        ({ entities: articles, relationships } = processed.articles);
+        ({ entities: categories } = processed.categories);
+        ({ tags } = relationships);
+      });
+
+      after(() => {
+        processed = articles = categories = relationships = tags = null;
+      });
+
       it("should parse the example blog source as expected", async () => {
         try {
-          const processed = await processMarkdownSource(
-            {
-              entities: ["categories", "articles"],
-              directory: "blog",
-              relationships: ["tags"]
-            },
-            { languages: ["en"] }
-          );
-
-          const { entities: articles, relationships } = processed.articles;
-          const { entities: categories } = processed.categories;
-          const { tags } = relationships;
-
           return (
             expect(articles.length).to.equal(7) &&
             expect(categories.length).to.equal(2) &&
