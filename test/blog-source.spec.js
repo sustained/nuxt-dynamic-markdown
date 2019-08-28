@@ -71,7 +71,8 @@ describe("example source (blog)", () => {
         expect(existsSync(resolve(JSON_PATH, "categories.json"))).to.equal(true) &&
         expect(existsSync(resolve(JSON_PATH, "articles.json"))).to.equal(true) &&
         expect(existsSync(resolve(JSON_PATH, "tags.json"))).to.equal(true) &&
-        expect(existsSync(resolve(JSON_PATH, "articles_tags.json"))).to.equal(true)
+        expect(existsSync(resolve(JSON_PATH, "articles_tags.json"))).to.equal(true) &&
+        expect(existsSync(resolve(JSON_PATH, "articles_categories.json"))).to.equal(true)
       );
     } catch (e) {
       assert.fail(e.message);
