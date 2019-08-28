@@ -88,9 +88,9 @@ describe("example source (projects)", () => {
       return (
         expect(existsSync(resolve(JSON_PATH, "projects.json"))).to.equal(true) &&
         expect(existsSync(resolve(JSON_PATH, "languages.json"))).to.equal(true) &&
-        expect(existsSync(resolve(JSON_PATH, "technologies.json"))).to.equal(true) // &&
-        // expect(existsSync(resolve(JSON_PATH, "projects_languages.json"))).to.equal(true) &&
-        // expect(existsSync(resolve(JSON_PATH, "projects_technologies.json"))).to.equal(true)
+        expect(existsSync(resolve(JSON_PATH, "technologies.json"))).to.equal(true) &&
+        expect(existsSync(resolve(JSON_PATH, "projects_languages.json"))).to.equal(true) &&
+        expect(existsSync(resolve(JSON_PATH, "projects_technologies.json"))).to.equal(true)
       );
     } catch (e) {
       throw e;
