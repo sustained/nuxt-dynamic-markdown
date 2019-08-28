@@ -1,0 +1,14 @@
+nuxt:
+  aliases: [nuxtjs]
+  website: https://nuxtjs.org/
+  description: The Vue.js framework.
+vue:
+  aliases: [vuejs]
+  website: https://vuejs.org/
+  description: The progressive javascript framework.
+vuex:
+  website: https://vuex.vuejs.org/
+  description: A state management pattern + library for Vue.js applications.
+vue-router:
+  website: https://router.vuejs.org/
+  description: The official router for Vue.js.
